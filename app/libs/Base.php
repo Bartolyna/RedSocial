@@ -33,7 +33,7 @@
         return $this->stmt = $this->dbh->prepare($sql);
     }
 
-    private function bind($parametro, $valor, $tipo = null){
+    public function bind($parametro, $valor, $tipo = null){
         
         if(is_null($tipo)){
             switch(true){
@@ -68,9 +68,9 @@
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
-    public function roCount(){
+    public function rowCount(){
         $this->execute();
-        return $this->stmt->rowCount;
+        return $this->stmt->rowCount();
     }
 
     }
