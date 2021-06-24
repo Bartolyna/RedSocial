@@ -1,5 +1,6 @@
 <?php
 
+session_start();
     class Base{
 
         private $host = DB_HOST;
@@ -69,7 +70,6 @@
     }
 
     public function rowCount(){
-        $this->execute();
         return $this->stmt->rowCount();
     }
 

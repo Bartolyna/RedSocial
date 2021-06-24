@@ -14,7 +14,8 @@ include_once URL_APP. '/views/custom/header.php';
             <input type="password" name="contrasena" placeholder="Contraseña" required>
             <button class="btn-purple btn-block">Registrarme</button>
         </form>
-        <?php if(isset($_SESSION['usuarioError'])) ://Si la sesion de usuario existe ?>
+
+        <?php if(isset($_SESSION['usuarioError'])) ://Alerta registro invalido ?>
             <div class="alert alert-danger alert-dismissible fade show mt-2 mb-2" role="alert">
                 <?php echo $_SESSION['usuarioError']?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -22,6 +23,7 @@ include_once URL_APP. '/views/custom/header.php';
                 </button>
             </div>
         <?php unset($_SESSION['usuarioError']); endif?>
+
         <div class="contenido-link mt-2">
             <span class="mr-2">¿No tienes una cuneta?</span><a href="<?php echo URL_PROJECT?>/home/login">Ingresar</a>
         </div>

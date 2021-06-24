@@ -2,7 +2,7 @@
 
 function redirection($url){
     
-    header('location'.URL_PROJECT.$url);
+    header('location:'.URL_PROJECT.$url);
 }
 
 ?>

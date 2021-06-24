@@ -8,19 +8,32 @@ include_once URL_APP. '/views/custom/navbar.php';
     <div class="container-content center">
     <div class="content-action center">
         <h5>Iniciar sesion</h5>
-        <form action="">
-            <input type="text" placeholder="Usuruario" required>
-            <input type="password" placeholder="Contraseña" required>
+        <form action="<?php echo URL_PROJECT?>/home/login" method="POST">
+            <input type="text" name="usuario" placeholder="Usuruario" required>
+            <input type="password" name="contrasena" placeholder="Contraseña" required>
             <button class="btn-purple btn-block">Ingresar</button>
         </form>
-        <?php if(isset($_SESSION['loginComplete'])) ://Si la sesion de usuario existe ?>
-            <div class="alert alert-sucess alert-dismissible fade show mt-2 mb-2" role="alert">
+
+        <?php if(isset($_SESSION['loginComplete'])) ://Alerta login satisfactorio ?>
+            <div class="alert alert-success alert-dismissible fade show mt-2 mb-2" role="alert">
                 <?php echo $_SESSION['loginComplete']?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         <?php unset($_SESSION['loginComplete']); endif?>
+
+        
+        <?php if(isset($_SESSION['errorLogin'])) ://Alerta de error en el login del Usaurio ?>
+            <div class="alert alert-danger alert-dismissible fade show mt-2 mb-2" role="alert">
+                <?php echo $_SESSION['errorLogin']?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <?php unset($_SESSION['errorLogin']); endif?>
+
+       
         <div class="contenido-link mt-2">
             <span class="mr-2">¿No tienes una cuneta?</span><a href="<?php echo URL_PROJECT?>/home/register">Registrarme</a>
         </div>

@@ -10,11 +10,28 @@ class usuario{
        $this->db = new Base;  
     }
 
+    public function getUsuario($usuario){
+        
+        $this->db->query('SELECT * FROM usuarios WHERE usuario = :user');
+        $this->db->bind(':user', $usuario);
+        return $this->db->register();
+
+    }
+
+    public function verificarContrasena($datosUsuario, $contrasena){
+
+        if(password_verify($contrasena, $datosUsuario->contrasena)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function verificarUsuario($datosUsuario){
 
         $this->db->query('SELECT usuario FROM usuarios WHERE usuario = :user');
         $this->db->bind(':user', $datosUsuario['usuario']);
-
+        $this->db->register();
         if($this->db->rowCount()){
             return false;
         }else{
